@@ -9,19 +9,14 @@
   <body>
     <div class="container">
       <header class="">
-        <input
-          type="text"
-          name=""
-          id=""
-          placeholder="search.. eg., Bengaluru"
-        />
+        <input type="text" name="" id="" placeholder="search.. eg., Dharwad" />
       </header>
       <main class="">
         <section class="quick-status">
           <div class="weather-main">
             <p id="weather">OverCast Clouds</p>
-            <img src="10d.png" alt="" />
-            <p>Light Rain</p>
+            <img src="" alt="" id="weather-icon" />
+            <p id="weather-desc">Light Rain</p>
           </div>
           <div class="weather-temp">
             <p id="temp">23&deg;C</p>
@@ -33,7 +28,7 @@
             Wind: 1.5m/s
           </article>
           <article id="humidity" class="tile-background">Humidity: 60%</article>
-          <article id="uv-index" class="tile-background">UV Index: 0.0</article>
+          <article id="uv-index" class="tile-background">UV Index: _._</article>
           <article id="pressure" class="tile-background">
             Pressure: 1011hPa
           </article>
@@ -41,7 +36,7 @@
             Visibility: 10.0km
           </article>
           <article id="dew-point" class="tile-background">
-            Dew Point: 15&deg;C
+            Dew Point: _&deg;C
           </article>
         </section>
         <section class="hourly">
@@ -82,5 +77,6 @@
       </main>
     </div>
     <script src="app.js"></script>
+    <script src="config.js"></script>
   </body>
 </html>
