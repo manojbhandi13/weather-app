@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="">
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="search.. eg., Bengaluru"
+        />
+      </header>
+      <main class="">
+        <section class="quick-status">
+          <div class="weather-main">
+            <p id="weather">OverCast Clouds</p>
+            <img src="10d.png" alt="" />
+            <p>Light Rain</p>
+          </div>
+          <div class="weather-temp">
+            <p id="temp">23&deg;C</p>
+            <p id="temp-feels">Feels like 23&deg;C</p>
+          </div>
+        </section>
+        <section class="indicators">
+          <article id="wind-speed" class="tile-background">
+            Wind: 1.5m/s
+          </article>
+          <article id="humidity" class="tile-background">Humidity: 60%</article>
+          <article id="uv-index" class="tile-background">UV Index: 0.0</article>
+          <article id="pressure" class="tile-background">
+            Pressure: 1011hPa
+          </article>
+          <article id="visibility" class="tile-background">
+            Visibility: 10.0km
+          </article>
+          <article id="dew-point" class="tile-background">
+            Dew Point: 15&deg;C
+          </article>
+        </section>
+        <section class="hourly">
+          <div class="hourly-scroll">
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+            <div class="hour-temp tile-background"></div>
+          </div>
+        </section>
+        <section class="weekly">
+          <div class="weekly-scroll">
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+            <div class="week-temp tile-background"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
