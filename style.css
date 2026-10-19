@@ -32,6 +32,10 @@ header {
     align-items: center;
 }
 
+.hide {
+    display: none;
+}
+
 header input {
     width: 95%;
     height: 50%;
