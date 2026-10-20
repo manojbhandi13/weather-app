@@ -24,6 +24,9 @@ const hourlyScroll = document.querySelector(".hourly-scroll");
 const weeklyScroll = document.querySelector(".weekly-scroll");
 
 const hourlyWeeklyData = () => {
+  hourlyScroll.replaceChildren();
+  weeklyScroll.replaceChildren();
+
   const futureTime = new Date();
 
   for (let i = 0; i < 24; i++) {
