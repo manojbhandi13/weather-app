@@ -5,6 +5,32 @@
     color: white;
 }
 
+.loader {
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.load {
+    width: 10rem;
+    height: 10rem;
+    border: 2px solid white;
+    border-bottom: 2px solid black;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .tile-background {
     background-color: rgba(246, 92, 32, 0.9);
     border-radius: 0.2rem;
@@ -141,3 +167,4 @@ main {
     height: 40%;
     flex-shrink: 0;
 }
+

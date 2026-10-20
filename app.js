@@ -4,6 +4,9 @@ const URL = "https://api.openweathermap.org/data/2.5/weather?";
 const weatherIconURL = "https://openweathermap.org/payload/api/media/file/";
 const geoCodeURL = "https://api.openweathermap.org/geo/1.0/direct?q=";
 
+const loader = document.querySelector(".loader");
+const container = document.querySelector(".container");
+
 const heading = document.querySelector("h3");
 const input = document.querySelector("input");
 
@@ -52,6 +55,8 @@ const hourlyWeeklyData = () => {
     weeklyScroll.append(div);
     div.innerText = `${dateStamp.toDateString().slice(0, 3)} - __°C`;
   }
+  loader.classList.add("hide");
+  container.classList.remove("hide");
 };
 
 const displayQuickStatsAndIndicators = (data) => {
@@ -87,6 +92,7 @@ const loadedInterface = async () => {
 
 window.addEventListener("load", () => {
   if (!heading.classList.contains("hide")) heading.classList.add("hide");
+  container.classList.add("hide");
   loadedInterface();
 });
 
@@ -108,6 +114,7 @@ const fetchCoordinates = async (place) => {
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+    loader.classList.remove("hide");
     const place = e.target.value.trim();
     if (!heading.classList.contains("hide")) heading.classList.add("hide");
     fetchCoordinates(place);
