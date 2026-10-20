@@ -104,17 +104,48 @@ const fetchWeatherData = async (lat, lon) => {
   displayQuickStatsAndIndicators(data);
 };
 
+const searchAgain = document.createElement("p");
 const fetchCoordinates = async (place) => {
-  const response = await fetch(
-    `${geoCodeURL}${place},IN&limit=5&appid=${apiKey}`,
-  );
-  const data = await response.json();
-  fetchWeatherData(data[0].lat, data[0].lon);
+  try {
+    const response = await fetch(
+      `${geoCodeURL}${place},IN&limit=5&appid=${apiKey}`,
+    );
+
+    //server side errror
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    //server rendered data
+    const data = await response.json();
+
+    //but city not found
+    if (data.length === 0) {
+      loader.classList.add("hide");
+      container.classList.remove("hide");
+      searchAgain.classList.toggle("hide");
+      searchAgain.innerText = "City not found. Please enter valid city name";
+      searchAgain.style.color = "red";
+      document.querySelector("header").append(searchAgain);
+      document.querySelector("main").classList.add("hide");
+      return null;
+    }
+
+    searchAgain.classList.toggle("hide");
+    //if city found....
+    fetchWeatherData(data[0].lat, data[0].lon);
+  } catch (error) {
+    //network failure or another error
+    console.error("unable to obtain coordinates", error.message);
+    return null;
+  }
 };
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     loader.classList.remove("hide");
+    container.classList.add("hide");
+    document.querySelector("main").classList.remove("hide");
     const place = e.target.value.trim();
     if (!heading.classList.contains("hide")) heading.classList.add("hide");
     fetchCoordinates(place);
