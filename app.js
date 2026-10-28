@@ -9,6 +9,7 @@ const container = document.querySelector(".container");
 
 const heading = document.querySelector("h3");
 const input = document.querySelector("input");
+const searchAgain = document.createElement("p");
 
 const weatherMain = document.querySelector("#weather");
 const weatherIcon = document.querySelector("#weather-icon");
@@ -93,6 +94,7 @@ const loadedInterface = async () => {
 window.addEventListener("load", () => {
   if (!heading.classList.contains("hide")) heading.classList.add("hide");
   container.classList.add("hide");
+  searchAgain.classList.add("hide");
   loadedInterface();
 });
 
@@ -104,7 +106,6 @@ const fetchWeatherData = async (lat, lon) => {
   displayQuickStatsAndIndicators(data);
 };
 
-const searchAgain = document.createElement("p");
 const fetchCoordinates = async (place) => {
   try {
     const response = await fetch(
@@ -123,7 +124,7 @@ const fetchCoordinates = async (place) => {
     if (data.length === 0) {
       loader.classList.add("hide");
       container.classList.remove("hide");
-      searchAgain.classList.toggle("hide");
+      searchAgain.classList.remove("hide");
       searchAgain.innerText = "City not found. Please enter valid city name";
       searchAgain.style.color = "red";
       document.querySelector("header").append(searchAgain);
@@ -131,7 +132,6 @@ const fetchCoordinates = async (place) => {
       return null;
     }
 
-    searchAgain.classList.toggle("hide");
     //if city found....
     fetchWeatherData(data[0].lat, data[0].lon);
   } catch (error) {
@@ -145,6 +145,7 @@ input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     loader.classList.remove("hide");
     container.classList.add("hide");
+    searchAgain.classList.add("hide");
     document.querySelector("main").classList.remove("hide");
     const place = e.target.value.trim();
     if (!heading.classList.contains("hide")) heading.classList.add("hide");
