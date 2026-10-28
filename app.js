@@ -83,12 +83,26 @@ const displayQuickStatsAndIndicators = (data) => {
 };
 
 const loadedInterface = async () => {
-  const response = await fetch(
-    `${URL}lat=12.9716&lon=77.5946&units=metric&appid=${apiKey}`,
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `${URL}lat=12.9716&lon=77.5946&units=metric&appid=${apiKey}`,
+    );
 
-  displayQuickStatsAndIndicators(data);
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    displayQuickStatsAndIndicators(data);
+  } catch (error) {
+    document.body.replaceChildren();
+    document.body.style.color = "red";
+    document.body.style.display = "flex";
+    document.body.style.justifyContent = "center";
+    document.body.style.alignItems = "center";
+    document.body.innerText =
+      "Network Error. Please check your Internet Connection";
+  }
 };
 
 window.addEventListener("load", () => {
@@ -99,11 +113,26 @@ window.addEventListener("load", () => {
 });
 
 const fetchWeatherData = async (lat, lon) => {
-  const response = await fetch(
-    `${URL}lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`,
-  );
-  const data = await response.json();
-  displayQuickStatsAndIndicators(data);
+  try {
+    const response = await fetch(
+      `${URL}lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`,
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    displayQuickStatsAndIndicators(data);
+  } catch (error) {
+    document.body.replaceChildren();
+    document.body.style.color = "red";
+    document.body.style.display = "flex";
+    document.body.style.justifyContent = "center";
+    document.body.style.alignItems = "center";
+    document.body.innerText =
+      "Network Error. Please check your Internet Connection";
+  }
 };
 
 const fetchCoordinates = async (place) => {
@@ -136,7 +165,13 @@ const fetchCoordinates = async (place) => {
     fetchWeatherData(data[0].lat, data[0].lon);
   } catch (error) {
     //network failure or another error
-    console.error("unable to obtain coordinates", error.message);
+    document.body.replaceChildren();
+    document.body.style.color = "red";
+    document.body.style.display = "flex";
+    document.body.style.justifyContent = "center";
+    document.body.style.alignItems = "center";
+    document.body.innerText =
+      "Network Error. Please check your Internet Connection";
     return null;
   }
 };
